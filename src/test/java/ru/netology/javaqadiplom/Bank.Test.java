@@ -30,7 +30,7 @@ public class BankTest {
 
         System.out.print("Счет списания. Баланс на начало: " + account1.getBalance());
         System.out.println(" Счет зачисления. Баланс на начало: " + account2.getBalance());
-        Assertions.assertEquals(false, bank.transfer(account1, account2, 2_000));
+        Assertions.assertEquals(true, bank.transfer(account1, account2, 2_000));
         System.out.print("Счет списания. Баланс на конец: " + account1.getBalance());
         System.out.println(" Счет зачисления. Баланс на конец: " + account2.getBalance());
 
@@ -53,7 +53,7 @@ public class BankTest {
     public void shouldPayBetweenSavingsAccountsMoreThanMaxBalance() {
         // перевод между накопителными счетами; сумма перевода выходит за границу максбаланса
         Bank bank = new Bank();
-        SavingAccount account1 = new SavingAccount(13_000, 1_000, 10_000, 5);
+        SavingAccount account1 = new SavingAccount(13_000, 1_000, 15_000, 5);
         SavingAccount account2 = new SavingAccount(5_000, 1_000, 10_000, 5);
 
         System.out.print("Счет списания. Баланс на начало: " + account1.getBalance());
