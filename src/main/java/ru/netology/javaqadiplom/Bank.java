@@ -20,6 +20,13 @@ public class Bank {
         if (from.pay(amount)) {
             to.add(amount);
         }
+ //           if (from.pay(amount) == false) {
+ //           return false;
+ //       }
+        if (to.add(amount) == false) {
+            from.balance += amount;
+            return false;
+        }
         return true;
     }
 }
