@@ -64,4 +64,19 @@ public class BankTest {
         Assertions.assertEquals(10000, account1.getBalance());
         Assertions.assertEquals(2000, account2.getBalance());
     }
+
+    @Test
+    void shouldTransferFundsMoreThanRecipientCanAccept() {
+        SavingAccount account1 = new SavingAccount(16000, 1000, 19000, 5);
+        SavingAccount account2 = new SavingAccount(2000, 1000, 11000, 5);
+
+        System.out.println("Списываем средства c account1 текущий баланс:" + account1.getBalance() + " и переводим средства на account2 текущий баланс:" + account2.getBalance());
+
+        boolean result = bank.transfer(account1, account2, 15000);
+        System.out.println("Списали с account1 текущий баланс:" + account1.getBalance() + " и перевели на account2 текущий баланс:" + account2.getBalance());
+
+        Assertions.assertFalse(result);
+        Assertions.assertEquals(16000, account1.getBalance());
+        Assertions.assertEquals(2000, account2.getBalance());
+    }
 }
