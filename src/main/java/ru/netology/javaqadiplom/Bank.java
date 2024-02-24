@@ -17,9 +17,17 @@ public class Bank {
         if (amount <= 0) {
             return false;
         }
+        if (from.getBalance() < amount) { // Проверяем, достаточно ли средств на счете from
+            return false;
+        }
         if (from.pay(amount)) {
-            to.add(amount);
-            return true;
+            if (to.add(amount)) {
+                return true; // Перевод прошел успешно
+            } else {
+                // Откатываем операцию списания средств с счета from
+                from.add(amount);
+                return false; // Перевод не удался из-за неудачного пополнения счета to
+            }
         }
         return false;
     }
