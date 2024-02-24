@@ -151,7 +151,7 @@ public class BankTest {
 
         System.out.print("Счет списания. Баланс на начало: " + account1.getBalance());
         System.out.println(" Счет зачисления. Баланс на начало: " + account2.getBalance());
-        Assertions.assertEquals(false, bank.transfer(account1, account2, 10_000));
+        Assertions.assertEquals(false, bank.transfer(account1, account2, 9_999));
         System.out.println("Баланс счета с которого переводим:" + account1.getBalance());
         System.out.println("Баланс счета на который переводим:" + account2.getBalance());
     }
